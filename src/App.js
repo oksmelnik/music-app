@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import React, { useEffect } from 'react';
 import List from './components/List'
 import Album from './components/Album'
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 import { connect } from 'react-redux'
 import fetchAlbumsAction  from './actions/fetchAlbums'
 
-const App = ({ fetchAlbums, albums, pending }) => {
+const App = ({ fetchAlbums, albums, pending, error }) => {
 
     useEffect(() => {
         fetchAlbums()
     }, [])
+
+
 
   return (
       <Router>
           <div className="App">
               <Route path="/" exact
                      render={() => (
-                        <List albums={albums} pending={pending} />
+                        <List albums={albums} pending={pending} error={error}/>
                     )}
              />
 

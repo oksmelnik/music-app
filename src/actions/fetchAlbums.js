@@ -15,7 +15,8 @@ function fetchAlbums() {
                     imageSmall: item['im:image'][0].label,
                     imageBig: item['im:image'][2].label,
                     title: item.title.label,
-                    year: item['im:releaseDate'].attributes.label
+                    date: item['im:releaseDate'].attributes.label,
+                    artist: item['im:artist'].label
                 })
                 )
                 dispatch(fetchAlbumsSuccess(albums))

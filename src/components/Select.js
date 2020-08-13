@@ -1,9 +1,9 @@
 import Select from "react-select";
-import React, { useState } from 'react';
+import React  from 'react';
 import styled from 'styled-components'
 
-const StyledSelect = styled.div`
-    padding: 10px;
+const StyledSelect = styled(Select)`
+    margin-top: 10px;
 `
 
 function SelectField({ list, setFilteredList }) {
@@ -18,21 +18,21 @@ function SelectField({ list, setFilteredList }) {
     }
 
     return (
-        <StyledSelect>
+
             <form data-testid="form">
                 <label htmlFor="albm">Select by album name</label>
-            <Select
-                isMulti={true}
-                options={list.map(album => ({
-                    label: album.title,
-                    value: album.id
-                }))}
-                name="albm"
-                inputId="albm"
-                onChange={filterList}
-            />
+                <StyledSelect
+                    isMulti={true}
+                    options={list.map(album => ({
+                        label: album.title,
+                        value: album.id
+                    }))}
+                    name="albm"
+                    inputId="albm"
+                    onChange={filterList}
+                />
             </form>
-        </StyledSelect>
+
     );
 }
 

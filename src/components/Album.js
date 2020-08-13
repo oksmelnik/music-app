@@ -1,34 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import styled from 'styled-components'
-import {connect} from "react-redux";
-import { bindActionCreators } from "redux";
-import fetchAlbumsAction from "../actions/fetchAlbums";
+import noImage from '../assets/noImage.jpg'
 
-const StyledItem = styled.div`
-    display: flex;
-    align-items: left;
-    padding: 10px;
+const StyledAlbum = styled.div`
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 16px;
+`
+
+const Description = styled.div`
+    text-align: left;
+`
+
+const FieldName = styled.span`
+    font-weight: 600;
+    line-height: 30px;
 `
 
 function Album({ albums, match }) {
-    const getAlbum = () => albums && albums.filter(a => a.id === match.params.id)[0]
+    const getAlbum = () => ( albums &&  albums.length > 0 ) ?
+        albums.filter(a => a.id === match.params.id)[0] : {}
+
     const [album, setAlbum ] = useState(getAlbum())
 
     useEffect(() => {
         setAlbum(getAlbum())
     }, [albums])
 
+    const { title, imageBig, date, artist } = album
+
     return (
-        <StyledItem>
-            {album && (
-                <>
-                <img src={album.imageBig}/>
-            {album.title}
-            {album.date}
-            </>)
+        <StyledAlbum>
+            {
+                album && (
+                <Fragment>
+                    <img src={imageBig}/>
+                   <Description>
+                       <div><FieldName>Title:</FieldName> {title}</div>
+                       <div><FieldName>Artist:</FieldName> {artist}</div>
+                       <div><FieldName>Release date:</FieldName> {date}</div>
+                   </Description>
+                </Fragment>)
             }
-        </StyledItem>
+        </StyledAlbum>
     );
 }
+
+Album.defaultProps = {
+    imageBig: noImage,
+};
 
 export default Album
