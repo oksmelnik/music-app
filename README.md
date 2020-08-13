@@ -1,4 +1,22 @@
 # Music store app
+For installation & running the app best use: Yarn - Dependency Management
+
+Open terminal, run "yarn install" start or "npm install" depending on your setup. Then run "yarn start" or "npm start" This will run the app on port 3000 in your web browser.
+
+# Possible improvements
+* Add styling
+* Search not only by album name, but also by category, artist etc.
+* Add filtered list to the store and save it while navigating to the album and back
+* Optimise for mobile
+* Add typescript
+
+
+# Most challenging parts of the assignment
+* Testing of react-select (had to use ‘react-select-event’) as a core part of an assignment
+* Using typescript. Realised I remember less of it than I thought so used props types for types validation. 
+
+
+# Assignment
 
 The aim of this assignment is to get a feeling how you approach requirements and come up with a technical solution and structure for them.
 
